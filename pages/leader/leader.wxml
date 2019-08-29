@@ -1,0 +1,73 @@
+<!--pages/leader/leader.wxml-->
+<view class="leader">
+  <view class="banner">
+    <image src="../../images/bd.png"></image>
+  </view>
+  <!-- 榜单 -->
+  <view class="bulletin">
+    <view class="tab">
+      <view class="single {{tabIndex == 0 ? 'active' : ''}}" bindtap="tab" data-index="0">日榜</view>
+      <view class="single {{tabIndex == 1 ? 'active' : ''}}" bindtap="tab" data-index="1">周榜</view>
+    </view>
+    <view class="notice">
+      <view class="title">{{tabIndex == 0 ? '日榜说明' : '周榜奖励'}}</view>
+      <view class="box" wx:if="{{tabIndex == 0}}">
+        <text>*此榜每日截止24:00次日清空\n*获奖用户请联系客服领奖\n*每邀请1位好友可获得分享指数+1\n*日榜前3名分别获得300元、200元、100元</text>
+      </view>
+      <view class="box" wx:if="{{tabIndex == 1}}">
+        <text decode = "{{true}}">*活动期间周分享排行榜前1-3名将获得下方大奖\n（Iphone xR128G，华为P30 pro，小天才电话\n&nbsp;手表Z5，4-10名将获得体游科学实验室价值\n&nbsp;500元的丰富课程好礼；）\n*分享排行总榜将于每周天截止更新，获奖用户\n&nbsp;联系官方客服进行登记领取</text>
+      </view>
+    </view>
+    <!-- 奖励 -->
+    <view class="award">
+      <view class="wrap">
+        <view class="box">
+          <image src="../../images/z1.png"></image>
+          <view class="name">128G iPhone XR</view>
+          <view class="sort">第一名</view>
+        </view>
+        <view class="box">
+          <image src="../../images/z2.png"></image>
+          <view class="name">128G 华为P30 Pro</view>
+          <view class="sort">第二名</view>
+        </view>
+        <view class="box">
+          <image src="../../images/z3.png"></image>
+          <view class="name">小天才电话手表 Z5</view>
+          <view class="sort">第三名</view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 排行榜 -->
+    <view class="ranking" wx:if="{{isLogin}}">
+      <view class="head">
+        <view class="name">排名</view>
+        <view class="name">用户昵称</view>
+        <view class="name">邀请人数</view>
+      </view>
+      <view class="list_box">
+        <view class="list" wx:for="{{tabIndex == 0 ? dayList : weekList}}">
+          <view class="sequence">{{index+1}}</view>
+          <view class="info">
+            <view class="avatar">
+              <image class="bg1" src="../../images/a1.png" wx:if="{{index == 0}}"></image>
+              <image class="bg2" src="../../images/a2.png" wx:if="{{index == 1}}"></image>
+              <image class="bg3" src="../../images/a3.png" wx:if="{{index == 2}}"></image>
+              <image class="tx" src="{{item.avatarUrl}}"></image>
+            </view>
+            <view class="nick">{{item.nickName}}</view>
+          </view>
+          <view class="num">{{item.inviteUserNum}}人</view>
+        </view>
+      </view>
+    </view>
+    <!-- 未登录 -->
+    <view wx:else class="login">
+      <login-view isLogin="{{isLogin}}" class='login-habit-warp' bind:onLoginSuccess='login'>
+        <view class="info">点击登录</view>
+      </login-view>
+    </view>
+  </view>
+
+</view>

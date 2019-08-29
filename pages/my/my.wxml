@@ -1,0 +1,121 @@
+<!--pages/my/my.wxml-->
+<view class="mine">
+  <!-- 已登录 -->
+  <view class="top" wx:if="{{isLogin == true}}">
+    <image class="bg" src="../../images/bg.png"></image>
+    <view class="info">
+      <image class="head" src="{{user.avatar}}"></image>
+      <view class="nick">{{user.nickName}}</view>
+    </view>
+    <view class="user">
+      <view class="prize" bindtap="prize">
+        <image src="../../images/jiangping.png"></image>
+        <view class="kind">我的奖品</view>
+      </view>
+      <view class="record" bindtap="record" data-status="init">
+        <image src="../../images/zhuli.png"></image>
+        <view class="kind">助力记录</view>
+      </view>
+    </view>
+    <view class="card">
+      <image class="card_img" src="../../images/ye.png"></image>
+      <view class="top_card">可提现金额</view>
+      <view class="bot">
+        <view class="total">
+          <text>¥</text>{{balance.balance ? balance.balance/100 : '0.00'}}</view>
+        <view class="tx" bindtap="withdraw" wx:if="{{user.phone}}">提现</view>
+        <button class="tx" wx:else open-type='getPhoneNumber' bindgetphonenumber="bindGetPhoneNumber">提现</button>
+      </view>
+    </view>
+  </view>
+  <!-- 未登录 -->
+  <view class="top" wx:else>
+    <image class="bg" src="../../images/bg.png"></image>
+    <login-view isLogin="{{isLogin}}" class='login-habit-warp' bind:onLoginSuccess='login'>
+      <view class="info">
+        <image class="head" src=""></image>
+        <view class="nick">点击头像登录</view>
+      </view>
+    </login-view>
+
+    <view class="user">
+      <login-view isLogin="{{isLogin}}" class='login-habit-warp' bind:onLoginSuccess='prize'>
+        <view class="prize">
+          <image src="../../images/jiangping.png"></image>
+          <view class="kind">我的奖品</view>
+        </view>
+      </login-view>
+      <login-view isLogin="{{isLogin}}" class='login-habit-warp' bind:onLoginSuccess='record'>
+        <view class="record">
+          <image src="../../images/zhuli.png"></image>
+          <view class="kind">助力记录</view>
+        </view>
+      </login-view>
+    </view>
+
+    <view class="card">
+      <image class="card_img" src="../../images/ye.png"></image>
+      <view class="top_card">可提现金额</view>
+      <view class="bot">
+        <view class="total">
+          <text>¥</text>1000+</view>
+        <view class="tx">提现</view>
+      </view>
+    </view>
+  </view>
+  <!-- 福利推荐 -->
+  <view class="fl">
+    <view class="title">福利推荐</view>
+    <view class="list">
+      <view class="list_cont" wx:for="{{adv}}">
+        <image src="{{item.advImg}}"></image>
+        <!-- 客服会话 -->
+        <button wx:if="{{item.advUrlType == '4'}}" open-type="contact" session-from="{{item.advUrl}}"></button>
+        <view wx:else class="empty" bindtap="advjump" data-appid="{{item.wxAppId}}" data-url="{{item.advUrl}}" data-type="{{item.advUrlType}}"></view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<!-- 好友助力记录 -->
+<view class="modal" wx:if="{{showRecord}}">
+  <view class="record">
+    <view class="title">好友助力记录</view>
+    <view class="invite">
+      <scroll-view scroll-y='true' style="height: 615rpx" bindscrolltolower='lower' class='swiper_view'>
+        <view class="list" wx:for="{{recordList}}">
+          <image class="head" src="{{item.inviteAvatar}}"></image>
+          <view class="nick">{{item.inviteUserNickName}}</view>
+          <view class="date">{{item.createTime}}</view>
+        </view>
+      </scroll-view>
+    </view>
+  </view>
+  <view class="close" bind:tap="close">
+    <image class="" src="../../images/close.png" mode="aspectFit"></image>
+  </view>
+</view>
+
+<!-- 提现 -->
+<view class="modal withdraw" wx:if="{{withdraw}}">
+  <view class="box">
+    <view class="list_box">
+      <view class="money {{amount == item.amount ? 'active' : ''}}" bindtap="select" wx:for="{{withdrawList}}" data-amount="{{item.amount}}">{{item.amount/100}}元</view>
+    </view>
+    <view class="tx" bindtap="sure">提现</view>
+  </view>
+  <view class="close" bind:tap="close">
+    <image class="" src="../../images/close.png" mode="aspectFit"></image>
+  </view>
+</view>
+
+<view class="horse-run-lamp">
+  <lamp id="lamp" lampData="{{lampData}}" color1="#fff" color2="#F9D0A7" />
+</view>
+
+<!-- 客服 -->
+<view class="kefu" bindtouchmove="touchMoveChange" style="left:{{feed_style.x}};top:{{feed_style.y}};">
+  <image src="../../images/kefu.png"></image>
+  <view class="concat">联系客服</view>
+  <button open-type="contact" session-from="{{channelNo}}"></button>
+</view>

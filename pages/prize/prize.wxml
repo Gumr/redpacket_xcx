@@ -1,0 +1,16 @@
+<!--pages/prize/prize.wxml-->
+<view class="prize">
+  <view class="goods" wx:if="{{awardList.length > 0}}">
+    <view class="list" wx:for="{{awardList}}" bindtap="address" data-param="{{index}}">
+      <view class="img">
+        <image mode="aspectFit" src="{{item.giftCoverImg}}"></image>
+      </view>
+      <view class="info">
+        <view class="name">{{item.giftName}}</view>
+        <view class="time">{{item.receiveTime}}</view>
+        <image src="../../images/bot.png"></image>
+      </view>
+    </view>
+  </view>
+  <view wx:else class="no">暂无奖品</view>
+</view>

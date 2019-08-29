@@ -1,0 +1,281 @@
+<!-- index.wxml -->
+<view class="container {{showNewpacket || openBag || openAgain || rule ? 'no-scroll' : ''}}">
+  <view class="img">
+    <image class="" bindtap="weal" data-appid="{{banner[0].wxAppId}}" data-url="{{banner[0].advUrl}}" data-type="{{banner[0].advUrlType}}" src="{{banner[0].advImg}}"></image>
+    <view class="gz" bind:tap="rule">活动规则</view>
+  </view>
+  <!-- 跑马灯 -->
+  <view class="horse-run-lamp" wx:if="{{showLamp}}">
+    <lamp id="lamp" lampData="{{lampData}}" color1="#4D4D4D" color2="#FB3B39" />
+  </view>
+  <!-- 现金红包天天领 -->
+  <view class="day">
+    <view class="title">
+      福利天天领
+    </view>
+    <!-- 礼品 -->
+    <form class="catchForm" report-submit bindsubmit="catchSubmit">
+      <button form-type="submit" class="catchBtn">
+        <login-view isLogin="{{isLogin}}" class='login-habit-warp' bind:onLoginSuccess='openGift'>
+          <view class="cash gift_bot">
+            <image class="cash_bg" src="../../images/lb.png" mode="aspectFit">
+
+            </image>
+            <image class="cash_icon" src="../../images/open.png" mode="aspectFit">
+
+            </image>
+          </view>
+        </login-view>
+      </button>
+    </form>
+    <form class="catchForm" report-submit bindsubmit="catchSubmit">
+      <button form-type="submit" class="catchBtn">
+        <login-view isLogin="{{isLogin}}" class='login-habit-warp' bind:onLoginSuccess='openAgain'>
+          <view class="cash">
+            <image class="cash_bg" src="../../images/cash.png" mode="aspectFit">
+
+            </image>
+            <image class="cash_icon" src="../../images/open.png" mode="aspectFit">
+
+            </image>
+          </view>
+        </login-view>
+      </button>
+    </form>
+  </view>
+
+  <!-- 新人专属红包 -->
+  <view class="day new">
+    <view class="title">
+      新人专属红包
+    </view>
+    <form class="catchForm" report-submit bindsubmit="catchSubmit">
+      <button form-type="submit" class="catchBtn">
+        <login-view isLogin="{{isLogin}}" class='login-habit-warp' bind:onLoginSuccess='packet'>
+          <view class="cash">
+            <image class="cash_bg" src="../../images/new.png" mode="aspectFit|aspectFill|widthFix">
+
+            </image>
+            <image class="cash_icon" src="../../images/go.png" mode="aspectFit|aspectFill|widthFix">
+
+            </image>
+          </view>
+        </login-view>
+      </button>
+    </form>
+  </view>
+
+  <!-- 活动福利 -->
+  <view class="welfare">
+    <view class="title">活动福利享不停</view>
+    <view class="list">
+      <view class="content" wx:for="{{weal}}">
+        <image src="{{item.advImg}}"></image>
+        <!-- 客服会话 -->
+        <button wx:if="{{item.advUrlType == '4'}}" open-type="contact" session-from="{{item.advUrl}}"></button>
+        <view wx:else class="empty" bindtap="weal" data-appid="{{item.wxAppId}}" data-url="{{item.advUrl}}" data-type="{{item.advUrlType}}"></view>
+      </view>
+    </view>
+  </view>
+
+</view>
+
+<!-- 弹窗 -->
+<view class="shadow" wx:if="{{showNewpacket || openBag || openAgain || rule}}">
+  <!-- 新人红包 -->
+  <view class="newpeople {{showNewpacket == true ? 'active' : ''}}">
+    <view class="packet">
+      <image class="pack_img" src="../../images/red.png"></image>
+      <view class="wrap">
+        <image class="head"></image>
+        <view class="title">
+          <image src="../../images/logo.png"></image>
+        </view>
+        <view class="t1">给你发了一个现金红包</view>
+        <view class="t2">天天可领最高888元</view>
+        <image class="open" bindtap="open" src="../../images/open.png" data-redPacketId="{{newList[0].userRedPacketId}}"></image>
+        <text class="t3">邀请好友一起领取\n有几率奖励翻倍哦</text>
+      </view>
+    </view>
+    <view class="close" catchtap="close">
+      <image class="" src="../../images/close.png" mode="aspectFit"></image>
+    </view>
+  </view>
+  <!-- 打开新人红包 -->
+  <view class="bag {{openBag == true ? 'active' : ''}}">
+    <view class="bag_wrap">
+      <image class="bag_img" src="../../images/bag.png"></image>
+      <view class="wrap_bag">
+        <view class="title">恭喜您获得</view>
+        <view class="total">
+          {{newList[0].redPacketAmount/100}}
+          <image src="../../images/money.png"></image>
+        </view>
+        <view class="radius_wrap">
+          <view class="radius_cont" bindtap="openAgain">再开四个红包</view>
+        </view>
+        <view class="tx">提现></view>
+        <view class="invite">邀请好友 奖励翻倍</view>
+      </view>
+    </view>
+    <view class="close" catchtap="close">
+      <image class="" src="../../images/close.png" mode="aspectFit"></image>
+    </view>
+  </view>
+  <!-- 再开四个红包 -->
+  <view class="openAgain {{openAgain == true ? 'active' : ''}}">
+    <view class="again_wrap">
+      <image class="again_img" src="../../images/day.png"></image>
+      <view class="again_cont">
+        <view class="list" wx:for="{{dayList}}" bindtap="throttle" data-index="{{index}}" data-redpacketid="{{item.userRedPacketId}}" data-unlockstatus="{{item.unlockStatus}}" data-receivestatus="{{item.receiveStatus}}">
+          <image class="lock_bg" src="../../images/lock_bg.png"></image>
+          <!-- 已拆 -->
+          <view class="lock" wx:if="{{item.unlockStatus == '1' && item.receiveStatus == '1'}}">
+            <view class="time">获得
+              <text>{{item.redPacketAmount/100}}</text>
+            </view>
+            <image class="lock_img" src="../../images/lockopen.png"></image>
+            <view class="intro">已存入余额</view>
+          </view>
+          <!-- 待拆 -->
+          <view class="lock" wx:if="{{item.unlockStatus == '1' && item.receiveStatus == '0'}}">
+            <image class="lock_img {{clickIndex == index && throttle ? 'active' : ''}}" src="../../images/dc.png"></image>
+            <view class="intro">待拆</view>
+          </view>
+          <!-- 待解锁 -->
+          <view class="lock" wx:if="{{item.unlockStatus == '0'}}">
+            <view class="time">
+              <text>{{item.remainHours}}小时{{item.remainMin}}分</text> 后解锁
+            </view>
+            <image class="lock_img {{clickIndex == index && throttle ? 'active' : ''}}" src="../../images/lockno.png"></image>
+            <view class="intro">待解锁</view>
+          </view>
+        </view>
+      </view>
+      <!-- 邀请好友领红包 -->
+      <view class="friend">
+        <view class="fri_cont" bindtap="invite" data-type="1">邀请好友领红包</view>
+      </view>
+      <view class="wz">每邀请一个新用户即可开一个红包</view>
+    </view>
+    <view class="close" catchtap="close">
+      <image class="" src="../../images/close.png" mode="aspectFit"></image>
+    </view>
+  </view>
+  <!-- 参与条件 规则弹窗 -->
+  <view class="rule_wrap" wx:if="{{rule}}">
+    <view class="rule">
+      <view class="cont">
+        <view class="title">
+          <text class="color">-</text> 参与条件
+          <text class="color">-</text>
+        </view>
+        <text class="tj" decode="true">&emsp;&emsp;发起活动用户及受邀请用户需授权成为体游小程序用户，否则将无法参与开红包，参与的用户可在小程序右上角点击，方便后期随时通过微信下拉寻找小程序进入再次参与活动；</text>
+        <view class="title">
+          <text class="color">-</text> 活动玩法
+          <text class="color">-</text>
+        </view>
+        <view class="bz">1. 开启礼包规则</view>
+        <text decode="true">&emsp;&emsp;用户通过小程序或者好友海报扫码邀请进入活动首页，点击首页开礼包，即可开启礼包活动；\n&emsp;&emsp;新用户赠送一次立即开礼包机会，后续礼包开启需等待24小时；用户也可通过邀请好友共同参与的方式提前获得解锁礼包机会，邀请一位新用户即可获赠一次机会；\n&emsp;&emsp;开启完第四个礼包之后，礼包内的奖品会重置更新，用户可以赢取新一轮的丰富奖品；同时新一轮的中奖几率会提高100%哦，快来成为新的幸运达人吧，万元豪礼等你来拿；</text>
+        <view class="bz">2. 天天领红包开启步骤</view>
+        <text decode="true">&emsp;&emsp;用户通过小程序或者好友海报邀请进入活动首页，点击首页天天领红包，即可开启红包活动，首次开启最高可获得888元现金红包；\n&emsp;&emsp;新用户可点击专属的新用户红包活动，首次开启最高可获得999元现金红包；\n&emsp;&emsp;开启首个红包之后用户可以等待时间继续开启剩余红包，每个红包时间跨度为一天，红包数量不设上限，领取完4个之后会继续更新红包；\n&emsp;&emsp;ps：用户可通过邀请好友或新用户参与红包活动提前解锁剩余红包，每邀请一个用户即可开启一个红包；</text>
+        <view class="bz">3. 邀请好友参与步骤</view>
+        <text decode="true">&emsp;&emsp;用户通过点击邀请好友页面，可生成专属邀请海报和邀请文案，保存文案和海报之后将其分享到微信/朋友圈，邀请好友共同参与，当好友参与之后即可提前获得开启剩余红包机会，每邀请一个用户即可获得一个红包开启机会。</text>
+        <view class="bz">4. 红包使用提现步骤</view>
+        <text decode="true">&emsp;&emsp;用户通过小程序，在我的 → 可提现金额→ 查看自己累计收入和可提现金额；\n&emsp;&emsp;在页面中点击“马上提现”按钮，选择提现金额，绑定手机号后进入公众号即可提现。\n&emsp;&emsp;ps：提现金额需满足最低提现门槛，否则将无法提现，用户可通过开启剩余红包达到提现门槛再次选择提现。</text>
+        <view class="bz">5. 用户守则</view>
+        <text decode="true">&emsp;&emsp;一个受邀参与红包活动用户仅可帮助一位邀请人，比如：A邀请B参与活动，A将获得一次提前开启红包机会，若之后C邀请B参与活动，C将无法获得提前开启红包机会；\n&emsp;&emsp;活动期间，用户如果违反诚实信用原则或出现违规行为（如作弊领取，恶意套取，使用多个账户，不符合参与条件等）活动品牌发起方将有权取消该用户获得奖品资格，并有权收回或要求用户返还红包收益；</text>
+        <view>
+          <text class="xx" decode="true"><text class="xicon">★</text>&emsp;凡参与本活动者，即视为接受活动所有规则，且遵循体游公司法律声明及其他关于营销活动的相关规定，体游公司有权在法律允许的范围内对活动规则作出适当调整；</text>
+        </view>
+        <view>
+          <text class="xx" decode="true"><text class="xicon">★</text>&emsp;因可能存在系统缓存，页面更新导致红包发放异常等不确定性情况，如您发现异常，请等待页面刷新，并及时联系我们。</text>
+        </view>
+        <text class="concat" decode="true">&emsp;&emsp;联系方式：\n</text>
+        <text class="jt" decode="true">&emsp;&emsp;小程序 → 我的 → 联系客服咨询反馈</text>
+      </view>
+    </view>
+    <view class="close" catchtap="close">
+      <image class="" src="../../images/close.png" mode="aspectFit"></image>
+    </view>
+  </view>
+</view>
+
+<!-- 礼包弹窗 -->
+<view class="giftModal" wx:if="{{showGift}}">
+  <view class="bg">
+    <image class="bg_img" src="../../images/gift.png"></image>
+    <view class="box">
+      <view class="box_content {{dot == true || blackBox == true ? 'active' : ''}}" wx:for="{{boxList}}" bindtap="openBox" data-index="{{index}}">
+        <!-- 初始组展示商品 -->
+        <image wx:if="{{dot == false && blackBox == false && item.giftGroupPos == '-1' && newGroup == true }}" class="small_icon" src="{{item.giftCoverImg}}"></image>
+        <!-- 展示1s后 商品收进中间盒 -->
+        <image wx:if="{{dot == true && index != 4}}" class="small_icon" src="{{item.giftCoverImg}}"></image>
+        <!-- 展示1s后中间商品变成盒子 -->
+        <image wx:if="{{dot == true && index == 4}}" class="small_icon c_gift" src="../../images/g5.png"></image>
+        <!-- 展示1.6s后全部变成盒子 -->
+        <image wx:if="{{blackBox == true && dot == false}}" class="small_icon c_gift" src="../../images/g5.png"></image>
+        <!-- 已经打开过商品 -->
+        <image wx:if="{{dot == false && blackBox == false && item.giftGroupPos != '-1'}}" class="small_icon" src="{{item.giftCoverImg}}"></image>
+        <!-- 显示红包金额 -->
+        <view wx:if="{{dot == false && blackBox == false && item.giftGroupPos != '-1' && item.giftAmount && item.giftId == '1'}}" class="amount">{{item.giftAmount/100}}</view>
+        <!-- 已经打开过商品其余盒子 -->
+        <image wx:if="{{dot == false && blackBox == false && (item.giftGroupPos == '-1' || item.giftGroupPos == undefined) && newGroup == false}}" class="small_icon c_gift" src="../../images/g5.png"></image>
+      </view>
+    </view>
+    <!-- 打开次数 -->
+    <view class="number">
+      <view class="jh">
+        您还有<text>{{openNum}}</text>次打开机会</view>
+      <view wx:if="{{unlockTime}}" class="time">
+        <text>{{remainHours}}</text>小时<text>{{remainMin}}</text>分后可再打开一次
+      </view>
+    </view>
+    <!-- 邀请好友 -->
+    <view class="friend">
+      <view class="fri_cont" bindtap="invite" data-type="2">邀请好友开礼包</view>
+    </view>
+    <view class="wz">每邀请一个新用户即可开一个礼包</view>
+  </view>
+  <view class="close" catchtap="close">
+    <image src="../../images/close.png"></image>
+  </view>
+</view>
+
+<!-- 开礼品弹窗 -->
+<view class="modal" wx:if="{{openGift}}">
+  <!-- 过渡一 -->
+  <view class="k1" wx:if="{{k1}}">
+    <image class="box" src="../../images/k3.png"></image>
+    <image class="light" src="../../images/k1.png"></image>
+    <image class="coin" src="../../images/k2.png"></image>
+    <image class="bag1" src="../../images/k4.png"></image>
+    <image class="bag2" src="../../images/k4.png"></image>
+    <image class="star" src="../../images/k5.png"></image>
+    <image class="star1" src="../../images/k5.png"></image>
+    <image class="star2" src="../../images/k5.png"></image>
+    <image class="star3" src="../../images/k5.png"></image>
+    <image class="star4" src="../../images/k5.png"></image>
+    <image class="star5" src="../../images/k5.png"></image>
+    <image class="star6" src="../../images/k5.png"></image>
+    <image class="star7" src="../../images/k6.png"></image>
+  </view>
+  <view class="k2" wx:if="{{k2}}">
+    <view class="gift">
+      <view class="box">
+        <image class="ch" src="../../images/ch.png"></image>
+        <image class="box_a" src="../../images/box_a.png"></image>
+        <image class="light" src="../../images/k1.png"></image>
+        <image class="box_b" src="../../images/box_b.png"></image>
+        <image class="goods" mode="widthFix" src="{{award.giftCoverImg}}"></image>
+        <view class="total" wx:if="{{award.giftId == '1'}}">{{award.giftAmount/100}}</view>
+      </view>
+      <view class="name">{{award.giftShowName}}</view>
+      <view class="bot">
+        <view class="btn btn1" bindtap="see">查看奖品</view>
+        <view class="btn btn2" bindtap="again">再来一次</view>
+      </view>
+      <view class="kk">可在“我的奖品进行查看”</view>
+    </view>
+  </view>
+</view>

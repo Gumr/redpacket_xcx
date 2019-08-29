@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "login-view": "../../components/login_view/login_view"
+  },
+  "navigationBarTitleText": "排行榜"
+}

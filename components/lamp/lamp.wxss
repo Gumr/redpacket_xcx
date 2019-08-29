@@ -1,0 +1,70 @@
+/* components/lamp/lamp.wxss */
+
+.lamp-bg {
+  height: 100%;
+  overflow: hidden;
+}
+
+.lamp-content {
+  position: relative;
+  height: 100%;
+  top: 0rpx;
+  left: 100%;
+  animation: lamp 6s linear infinite normal;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.avatar {
+  width: 44rpx;
+  height: 44rpx;
+  display: inline-block;
+  border-radius: 50%;
+  margin-left: 16rpx;
+  /* margin-top: 6rpx; */
+}
+
+.lamp-txt {
+  font-size: 24rpx;
+  color: #fff;
+  display: inline;
+  margin-left: 6rpx;
+  position: relative;
+  /* top: -10rpx; */
+}
+.lamp-txt text{
+  color: #F9D6AB;
+} 
+
+@keyframes lamp {
+  0% {
+    position: relative;
+    top: 0rpx;
+    left: 100%;
+  }
+
+  25% {
+    position: relative;
+    top: 0;
+    left: 50%;
+  }
+
+  50% {
+    position: relative;
+    top: 0;
+    left: 0%;
+  }
+
+  75% {
+    position: relative;
+    top: 0;
+    left: -50%;
+  }
+
+  100% {
+    position: relative;
+    top: 0rpx;
+    left: -100%;
+  }
+}

@@ -1,0 +1,49 @@
+<!--pages/address/address.wxml-->
+
+<view class="address {{isIpx == true ? 'isIpx' : ''}}">
+  <view class="banner">
+    <image mode="widthFix" src="{{person.giftCoverImg}}"></image>
+    <view class="name">{{person.giftName}}</view>
+    <view class="time">2019/08/20</view>
+  </view>
+  <!-- 兑奖信息 -->
+  <view class="redemp">
+    <view class="title">兑奖信息</view>
+    <view class="form">
+      <view class="receiver">
+        <view class="head">收货人:</view>
+        <input type="text" bindinput="info_1" value="{{person.expressReceiver}}"  maxlength="10" placeholder="请输入收货人姓名" />
+      </view>
+      <view class="receiver">
+        <view class="head">手机号:</view>
+        <input type="number" maxlength="11" bindinput="info_2" value="{{person.expressPhone}}" placeholder="请输入收货人手机号" />
+      </view>
+      <!-- <view class="receiver">
+        <view class="head">所在地区:</view>
+        <view class="infoText" bindtap="select">{{province&&city&&county ? province+city+county : '请选择寄送地址'}}</view>
+        <view class="arrow"></view>
+      </view> -->
+      <view class="receiver location">
+        <view class="head">详细地址:</view>
+        <textarea disabled="true" bindinput="info_3" value="{{person.expressProvince+person.expressCity+person.expressDistrict+person.expressAddress}}"  placeholder="如道路、门牌号、小区、楼栋号、单元室等" />
+      </view>
+    </view>
+  </view>
+  <view class="getAddress" bindtap="getAddress">{{edit == true ? '更改' : '选择'}}收获地址＞</view>
+  <!-- 兑奖时间 -->
+  <view class="redemptime redemp">
+    <view class="title">兑奖时间</view>
+    <view class="time">2019/08/15-2020/02/15</view>
+  </view>
+  <!-- 兑奖说明 -->
+  <view class="descrip redemp">
+    <view class="title">兑奖说明</view>
+    <view class="time">
+      <text decode="true">1.虚拟奖品中奖用户需联系公众号客服进行兑换，按照客服指引进行兑奖；\n2.部分虚拟奖品需提供个人信息进行领取；\n3.实物奖品需中奖用户直接通过小程序—我的奖品—点击需兑换奖品填写正确收货信息即可；\n活动期间所有实物奖品均包邮寄出，奖品最迟发出时间为兑奖日期结束后一周内；\n本次活动最终解释权为体游科学实验室，如有活动问题及时联系官方客服处理。</text>
+    </view>
+  </view>
+</view>
+
+<view class="bot {{isIpx == true ? 'isIpx' : ''}}" wx:if="{{person.expressStatus == '0' || person.expressStatus == '10'}}">
+  <view class="btn" bindtap="sure">提交信息</view>
+</view>

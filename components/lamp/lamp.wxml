@@ -1,0 +1,6 @@
+<!--components/lamp/lamp.wxml-->
+<view wx:if="{{lampData && lampData.length > 0}}" class="lamp-bg">
+  <view wx:if="{{showItem}}" class="lamp-content box box-lr box-align-center">
+    <view class="lamp-txt" style="color: {{color1}}">恭喜{{lampData[0].nickName}}抽到<text style="color: {{color2}}">{{lampData[0].prizeName}}</text></view>
+  </view>
+</view>

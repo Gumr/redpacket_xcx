@@ -1,0 +1,149 @@
+/* pages/invite/invite.wxss */
+
+page {
+  height: 100%;
+}
+
+.invite {
+  height: 100%;
+  box-sizing: border-box;
+  padding: 50rpx 0 0;
+}
+
+.invite .title {
+  font-size: 30rpx;
+  font-family: NotoSansHans-Medium;
+  font-weight: 500;
+  color: rgba(51, 51, 51, 1);
+  margin: 0 0 12rpx 56rpx;
+  position: relative;
+}
+
+.invite .title::before {
+  position: absolute;
+  display: block;
+  content: "";
+  width: 5rpx;
+  height: 26rpx;
+  background: #fb3b39;
+  border-radius: 3rpx;
+  left: -16rpx;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+.invite .ms {
+  font-size: 26rpx;
+  font-family: NotoSansHans-Regular;
+  font-weight: 400;
+  color: rgba(168, 168, 168, 1);
+  margin: 0 0 0 56rpx;
+}
+
+.wrap {
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.poste_box {
+  width: 506rpx;
+  height: 900rpx;
+  border-radius: 20rpx;
+  margin: 40rpx auto 0;
+}
+
+.save {
+  width: 506rpx;
+  height: 66rpx;
+  background: linear-gradient(0deg, rgba(240, 51, 48, 1) 0%, rgba(250, 88, 85, 1) 100%);
+  box-shadow: 0rpx 2rpx 6rpx 0rpx rgba(0, 0, 0, 0.2);
+  border-radius: 33rpx;
+  margin: 44rpx auto 0;
+  text-align: center;
+  line-height: 66rpx;
+  font-size: 30rpx;
+  font-family: NotoSansHans-Medium;
+  font-weight: 500;
+  color: rgba(255, 237, 214, 1);
+}
+
+/*  */
+
+.modal {
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  left: 0;
+  top: 0;
+}
+
+.modal .box {
+  width: 570rpx;
+  height: 480rpx;
+  background: rgba(255, 255, 255, 1);
+  box-shadow: 0rpx 4rpx 18rpx 0rpx rgba(27, 27, 27, 0.14);
+  border-radius: 40rpx;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 25%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 54rpx 0 0;
+}
+
+.modal .box .title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal .box .title image {
+  width: 30rpx;
+  height: 30rpx;
+  margin-right: 9rpx;
+}
+
+.modal .box .title .desc {
+  color: #333;
+  font-size: 30rpx;
+}
+
+.modal .box .vice {
+  font-size: 24rpx;
+  color: #a8a8a8;
+  margin: 12rpx auto 30rpx;
+}
+
+.modal .box .content {
+  width: 490rpx;
+  height: 210rpx;
+  background: #f5f6f8;
+  box-sizing: border-box;
+  padding: 18rpx 20rpx 0 20rpx;
+  color: #666;
+  font-size: 30rpx;
+  line-height: 1.2;
+}
+
+.modal .box .btn {
+  width: 340rpx;
+  height: 66rpx;
+  background: rgba(251, 59, 57, 1);
+  border-radius: 33rpx;
+  font-size: 30rpx;
+  font-family: Noto Sans S Chinese;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 1);
+  text-align: center;
+  line-height: 66rpx;
+  margin: 30rpx auto 0;
+}

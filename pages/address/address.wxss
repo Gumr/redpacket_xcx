@@ -1,0 +1,196 @@
+/* pages/address/address.wxss */
+
+page {
+  background-color: rgba(255, 255, 255, 1);
+}
+
+/* 开始 */
+
+.address{
+  padding-bottom: 150rpx;
+}
+
+.address.isIpx{
+  padding-bottom: 218rpx;
+}
+
+.banner {
+  padding: 40rpx 0 48rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.banner image {
+  display: block;
+  width: 240rpx;
+}
+
+.banner .name {
+  color: #333;
+  font-size: 36rpx;
+  margin: 20rpx auto 11rpx;
+}
+
+.banner .time {
+  color: #999;
+  font-size: 24rpx;
+}
+
+.redemp {
+  box-sizing: border-box;
+  padding: 0 0 0 57rpx;
+}
+
+.redemp .title {
+  font-size: 30rpx;
+  color: #333;
+  position: relative;
+}
+
+.redemp .title::before {
+  position: absolute;
+  display: block;
+  content: "";
+  width: 5rpx;
+  height: 26rpx;
+  background: rgba(251, 59, 57, 1);
+  border-radius: 3rpx;
+  left: -17rpx;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+.redemp .form .receiver {
+  display: flex;
+  align-items: center;
+  padding: 35rpx 0;
+  border-bottom: 1rpx solid #f2f2f2;
+  position: relative;
+}
+
+.redemp .form .receiver .arrow {
+  position: absolute;
+  right: 39rpx;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  border-right: 2rpx solid #b3b3b3;
+  border-top: 2rpx solid #b3b3b3;
+  height: 15rpx;
+  width: 15rpx;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  border-left: 2rpx solid transparent;
+  border-bottom: 2rpx solid transparent;
+}
+
+.redemp .form .receiver .head {
+  width: 112rpx;
+  height: 24rpx;
+  font-size: 26rpx;
+  font-family: Noto Sans S Chinese;
+  font-weight: 400;
+  color: rgba(153, 153, 153, 1);
+  text-align: left;
+  line-height: 24rpx;
+  margin-right: 46rpx;
+}
+
+.redemp .form .receiver input, .redemp .form .receiver .infoText {
+  color: #666;
+  font-size: 26rpx;
+}
+
+.redemp .form .receiver .infoText {
+  flex: 1;
+}
+
+.redemp .form .location {
+  border-bottom: none;
+  padding-bottom: 40rpx;
+  align-items: flex-start;
+}
+
+.redemp .form .location textarea {
+  color: #666;
+  font-size: 26rpx;
+  flex: 1;
+  box-sizing: border-box;
+  height: 60rpx;
+  padding-right: 68rpx;
+}
+
+.getAddress {
+  font-size: 30rpx;
+  font-family: Noto Sans S Chinese;
+  font-weight: 500;
+  color: rgba(251, 59, 57, 1);
+  text-align: center;
+  margin: 0 auto 80rpx;
+  background: none;
+  border: 0;
+  position: initial;
+}
+
+/* 兑奖时间 */
+
+.redemptime {
+  padding-left: 57rpx;
+}
+
+.redemptime .time {
+  color: #666;
+  font-size: 26rpx;
+  margin-top: 18rpx;
+}
+
+.descrip {
+  margin-top: 29rpx;
+}
+
+.descrip .time{
+  padding-right: 60rpx;
+  margin-top: 18rpx;
+}
+
+.descrip .time text{
+  color: #666;
+  font-size: 26rpx;
+  line-height: 1.8;
+}
+
+.bot {
+  width: 750rpx;
+  height: 98rpx;
+  background: rgba(255, 255, 255, 1);
+  box-shadow: 0rpx -4rpx 10rpx 0rpx rgba(0, 0, 0, 0.07);
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bot.isIpx{
+  padding-bottom: 68rpx;
+}
+
+.bot .btn {
+  width: 700rpx;
+  height: 76rpx;
+  background: linear-gradient(0deg, rgba(251, 59, 57, 1) 0%, rgba(246, 92, 71, 1) 100%);
+  border-radius: 38rpx;
+  font-size: 36rpx;
+  font-family: Noto Sans S Chinese;
+  font-weight: 500;
+  color: rgba(255, 237, 214, 1);
+  text-align: center;
+  line-height: 76rpx;
+}
+
+/* 结束 */

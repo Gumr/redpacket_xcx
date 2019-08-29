@@ -1,0 +1,25 @@
+<!--pages/invite/invite.wxml-->
+<view class="invite">
+  <view class="title">生成邀请卡</view>
+  <view class="ms">保存你的专属海报，邀请好友一起来学习</view>
+  <view class="wrap">
+    <view class='poste_box'>
+      <canvas hidden="{{modal}}" id='canvas-container' canvas-id="myCanvas" style="width:506rpx;height:900rpx;" />
+      <image hidden="{{!modal}}" src="{{radarImg}}" style="width:506rpx;height:900rpx;" />
+    </view>
+    <view class="save" wx:if="{{showBtn}}" catchtap="saveShareImg">推荐给好友吧</view>
+  </view>
+</view>
+
+<view class="modal" wx:if="{{modal}}">
+  <view class="box">
+    <view class="title">
+      <image src="../../images/duigou.png"></image>
+      <view class="desc">海报已保存至相册</view>
+    </view>
+    <view class="vice">将文字和图片一起分享，成功率翻倍哦！{{activityType}}</view>
+    <view class="content" wx:if="{{activityType == '1'}}">争做红包达人，体游撒现金红包！最高999元锦鲤红包等你开！</view>
+    <view class="content" wx:else>争做礼包达人，体游赠送实物大礼包啦！最高iPhone X 128G/SK-II 护肤套装礼包等你来开！</view>
+    <view class="btn" bindtap="copy">一键复制分享文案</view>
+  </view>
+</view>

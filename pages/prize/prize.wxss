@@ -1,0 +1,83 @@
+/* pages/prize/prize.wxss */
+
+page {
+  background: #f7f7f7;
+}
+
+.prize {
+  box-sizing: border-box;
+  padding: 30rpx 0 0 41rpx;
+}
+
+.prize .no{
+  text-align: center;
+  transform: translateX(-20rpx);
+  margin-top: 40%;
+  color: #999;
+  font-size: 28rpx;
+}
+
+.goods {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.goods .list {
+  width: 325rpx;
+  height: 360rpx;
+  background: rgba(255, 255, 255, 1);
+  border-radius: 16rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20rpx;
+  z-index: 1;
+}
+
+.goods .list:nth-of-type(2n+1){
+  margin-right: 20rpx;
+}
+
+.list .img {
+  flex: 1;
+  box-sizing: border-box;
+  padding: 0rpx 0 0;
+}
+
+.list .img image {
+  width: 240rpx;
+  height: 240rpx;
+}
+
+.list .info {
+  width: 100%;
+  height: 119rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  padding-top: 34rpx;
+  position: relative;
+}
+
+.list .info image{
+  width: 325rpx;
+  height: 116rpx;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -1;
+}
+
+.list .info .name {
+  font-size: 30rpx;
+  color: #333;
+  margin-bottom: 11rpx;
+}
+
+.list .info .time {
+  color: #999;
+  font-size: 24rpx;
+}
+
+

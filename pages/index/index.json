@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "lamp": "../../components/lamp/lamp",
+    "login-view": "../../components/login_view/login_view"
+  }
+}

@@ -1,0 +1,395 @@
+/* pages/my/my.wxss */
+@import '../../style/cond.wxss';
+
+.horse-run-lamp {
+  width: 100%;
+  height: 51rpx;
+  position: fixed;
+  top: 0;
+}
+
+.top {
+  width: 100%;
+  height: 522rpx;
+  position: relative;
+  box-sizing: border-box;
+  padding: 76rpx 0 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.top .bg {
+  width: 750rpx;
+  height: 400rpx;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -1;
+}
+
+.top .info {
+  display: flex;
+  align-items: center;
+  margin-bottom: 17rpx;
+}
+
+.top .info .head {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  background: #fff;
+  margin: 0 20rpx 0 40rpx;
+}
+
+.top .info .nick {
+  font-size: 24rpx;
+  color: #fff;
+  font-size: 24rpx;
+}
+
+.user {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 26rpx;
+}
+
+.user .prize {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 215rpx;
+}
+
+.user .prize image, .user .record image {
+  width: 56rpx;
+  height: 56rpx;
+  margin-bottom: 12rpx;
+}
+
+.user .prize .kind, .user .record .kind {
+  font-size: 20rpx;
+  color: #fff;
+}
+
+.user .record {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card {
+  position: relative;
+  width: 698rpx;
+  height: 236rpx;
+  margin: 0 auto;
+}
+
+.card .card_img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.card .top_card {
+  font-size: 30rpx;
+  color: #bd6c2e;
+  margin: 43rpx 0 55rpx 55rpx;
+}
+
+.card .bot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 0 54rpx;
+}
+
+.card .bot .total {
+  font-size: 48rpx;
+  color: #bd6c2e;
+  font-family: DIN Pro Cond;
+}
+
+.card .bot .total text {
+  font-size: 36rpx;
+  margin-right: 5rpx;
+}
+
+.card .bot .tx {
+  width: 140rpx;
+  height: 46rpx;
+  background: linear-gradient(0deg, rgba(184, 102, 40, 1) 0%, rgba(214, 132, 60, 1) 100%);
+  box-shadow: 0px 1rpx 1rpx 0px rgba(111, 52, 8, 0.5);
+  border-radius: 23rpx;
+  font-size: 28rpx;
+  color: #fcd7a6;
+  text-align: center;
+  line-height: 46rpx;
+  margin: 0;
+}
+
+/* 好友助力记录 */
+
+.modal {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal .record {
+  width: 570rpx;
+  height: 780rpx;
+  background: rgba(255, 255, 255, 1);
+  box-shadow: 0rpx 4rpx 18rpx 0rpx rgba(27, 27, 27, 0.14);
+  border-radius: 40rpx;
+  box-sizing: border-box;
+  padding: 60rpx 0rpx 0 40rpx;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+}
+
+.modal .record .title {
+  width: 190rpx;
+  text-align: center;
+  margin: 0 auto 29rpx;
+  font-size: 26rpx;
+  color: #333;
+  position: relative;
+}
+
+.modal .record .title::before {
+  display: block;
+  content: '';
+  width: 10rpx;
+  height: 2rpx;
+  background: #fb3b39;
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+.modal .record .title::after {
+  display: block;
+  content: '';
+  width: 10rpx;
+  height: 2rpx;
+  background: #fb3b39;
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+.modal .record .invite .list {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12rpx;
+}
+
+.modal .record .invite .list .head {
+  width: 50rpx;
+  height: 50rpx;
+  border-radius: 50%;
+  background: #e6e6e6;
+  margin-right: 17rpx;
+}
+
+.modal .record .invite .list .nick {
+  width: 165rpx;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1; /*设置p元素最大1行，父元素需填写宽度才明显*/
+  text-overflow: ellipsis;
+  overflow: hidden;
+  font-size: 24rpx;
+  color: #333;
+  margin-right: 40rpx;
+  line-height: 1.2;
+}
+
+.modal .record .invite .list .date {
+  color: #999;
+  font-size: 22rpx;
+}
+
+.modal .close {
+  width: 84rpx;
+  height: 84rpx;
+  margin-top: 5%;
+}
+
+.modal .close image {
+  width: 100%;
+  height: 100%;
+}
+
+/* 福利 */
+
+.fl {
+  box-sizing: border-box;
+  padding: 0 40rpx;
+  margin: 40rpx auto 0;
+}
+
+.fl .title {
+  font-size: 30rpx;
+  color: #333;
+  font-weight: 500;
+  padding-left: 15rpx;
+  position: relative;
+}
+
+.fl .title::before {
+  position: absolute;
+  display: block;
+  content: '';
+  width: 5rpx;
+  height: 26rpx;
+  border-radius: 3rpx;
+  background: #fb3b39;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+.fl .list {
+}
+
+.fl .list .list_cont {
+  width: 670rpx;
+  height: 180rpx;
+  margin: 20rpx auto 0;
+  position: relative;
+}
+
+.fl .list .list_cont image {
+  width: 100%;
+  height: 100%;
+}
+
+.fl .list .list_cont .empty {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.fl .list .list_cont button {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+  background: transparent;
+}
+
+.withdraw .box {
+  width: 570rpx;
+  height: 480rpx;
+  background: rgba(255, 255, 255, 1);
+  border-radius: 40rpx;
+  box-sizing: border-box;
+  padding: 88rpx 0 0 40rpx;
+}
+
+.withdraw .box .list_box {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.withdraw .box .list_box .money {
+  box-sizing: border-box;
+  width: 150rpx;
+  height: 88rpx;
+  border: 2rpx solid rgba(251, 59, 57, 1);
+  border-radius: 10rpx;
+  text-align: center;
+  line-height: 88rpx;
+  font-size: 36rpx;
+  font-family: Noto Sans S Chinese;
+  font-weight: bold;
+  color: rgba(251, 59, 57, 1);
+  margin: 0 20rpx 20rpx 0;
+}
+
+.withdraw .box .list_box .money:nth-of-type(3n) {
+  margin-right: 0;
+}
+
+.withdraw .box .tx {
+  width: 320rpx;
+  height: 66rpx;
+  background: rgba(251, 59, 57, 1);
+  border-radius: 33rpx;
+  font-size: 30rpx;
+  font-family: Noto Sans S Chinese;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 1);
+  text-align: center;
+  line-height: 66rpx;
+  margin: 80rpx auto 0;
+  transform: translateX(-20rpx);
+}
+
+.withdraw .box .list_box .money.active {
+  background: #fb3b39;
+  color: #fff;
+}
+
+/* 客服 */
+
+.kefu {
+  width: 224rpx;
+  height: 66rpx;
+  border: 1rpx solid rgba(204, 204, 204, 1);
+  border-radius: 33rpx 0rpx 0rpx 33rpx;
+  position: fixed;
+  right: 0;
+  bottom: 40rpx;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 0 0 0 31rpx;
+  background: #fff;
+}
+
+.kefu image {
+  width: 46rpx;
+  height: 44rpx;
+  margin-right: 12rpx;
+}
+
+.kefu .concat {
+  font-size: 24rpx;
+  font-family: Noto Sans S Chinese;
+  font-weight: 400;
+  color: rgba(77, 77, 77, 1);
+}
+.kefu button{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 10;
+  background: transparent;
+  border: 0;
+}
+.kefu button::after{
+  display: none;
+}

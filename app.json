@@ -1,0 +1,53 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/leader/leader",
+    "pages/my/my",
+    "pages/invite/invite",
+    "pages/prize/prize",
+    "pages/address/address",
+    "pages/service/service",
+    "pages/webview/webview"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#FB3B39",
+    "navigationBarTitleText": "成长派多多",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "color": "#999999",
+    "selectedColor": "#FB3B39",
+    "borderStyle": "black",
+    "backgroundColor": "#fff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "活动",
+        "iconPath": "images/2.png",
+        "selectedIconPath": "images/1.png"
+      },
+      {
+        "pagePath": "pages/leader/leader",
+        "text": "排行榜",
+        "iconPath": "images/4.png",
+        "selectedIconPath": "images/3.png"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "text": "我的",
+        "iconPath": "images/6.png",
+        "selectedIconPath": "images/5.png"
+      }
+    ]
+  },
+  "navigateToMiniProgramAppIdList": [
+    "wxbc3870d98fab59f7"
+  ],
+  "permission": {
+    "scope.userLocation": {
+      "desc": "需要记录当前的位置信息"
+    }
+  },
+  "sitemapLocation": "sitemap.json"
+}

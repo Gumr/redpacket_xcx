@@ -1,0 +1,8 @@
+<!--pages/service/service.wxml-->
+<view class="service">
+  <view class="img">
+    <image  bindtap='previewImg' src="../../images/contact_kefu.png"></image>
+  </view>
+  <view class="wa">客服微信：tykx003</view>
+  <view class="number" bindtap="copyTBL">一键复制客服微信</view>
+</view>
